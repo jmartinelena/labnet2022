@@ -12,9 +12,9 @@ namespace PracticaExceptions
         {
             bool exito = true;
             Console.Write("Ingrese un valor a dividir por cero: ");
-            int value = Convert.ToInt32(Console.ReadLine());
             try
             {
+                int value = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("El resultado es: " + value / 0);
             }
             catch (DivideByZeroException ex)
