@@ -8,7 +8,7 @@ namespace Practica.EF.Common.Exceptions
 {
     public class BadIDException : Exception
     {
-        public BadIDException(int id) : base($"El id {id} no existe, no es valido o no es unico.")
+        public BadIDException(string id) : base($"El id {id} no existe, no es valido o no es unico.")
         {
 
         }

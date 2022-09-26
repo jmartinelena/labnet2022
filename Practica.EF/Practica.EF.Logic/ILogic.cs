@@ -10,7 +10,7 @@ namespace Practica.EF.Logic
     {
         List<T> GetAll();
 
-        T GetById(int id);
+        T GetById(string id);
 
         List<T> GetByCountry(string country);
 

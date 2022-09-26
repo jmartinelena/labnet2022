@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="BaseLogic.cs" />
     <Compile Include="CustomerLogic.cs" />
+    <Compile Include="EmployeeLogic.cs" />
     <Compile Include="ILogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -58,6 +58,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Practica.EF.Common\Practica.EF.Common.csproj">
+      <Project>{aac7e1ab-15e1-4758-a7b4-71552d67b10f}</Project>
+      <Name>Practica.EF.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Practica.EF.Entities\Practica.EF.Entities.csproj">
       <Project>{b9ec7bd7-e365-4683-874c-95c0bc96d79e}</Project>
       <Name>Practica.EF.Entities</Name>

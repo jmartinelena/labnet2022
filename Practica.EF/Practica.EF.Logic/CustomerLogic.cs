@@ -17,7 +17,7 @@ namespace Practica.EF.Logic
 
         public List<Customers> GetByCountry(string country)
         {
-            if (_context.Customers.Any(c => c.Country == "country"))
+            if (_context.Customers.Any(c => c.Country.ToLower() == country.ToLower()))
             {
                 //return _context.Customers.Where(c => c.Country == country).ToList();
                 var customersByCountry = from c in _context.Customers where c.Country == country select c;
@@ -29,11 +29,11 @@ namespace Practica.EF.Logic
             }
         }
 
-        public Customers GetById(int id)
+        public Customers GetById(string id)
         {
             try
             {
-                return _context.Customers.Single(c => c.CustomerID == Convert.ToString(id));
+                return _context.Customers.Single(c => c.CustomerID == id.ToUpper());
             }
             catch (InvalidOperationException)
             {
