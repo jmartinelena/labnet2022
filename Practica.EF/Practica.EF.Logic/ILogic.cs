@@ -9,5 +9,10 @@ namespace Practica.EF.Logic
     public interface ILogic<T>
     {
         List<T> GetAll();
+
+        T GetById(int id);
+
+        List<T> GetByCountry(string country);
+
     }
 }

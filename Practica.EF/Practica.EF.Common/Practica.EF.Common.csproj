@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F599D23A-C05C-47FA-A33D-6B2C48496C54}</ProjectGuid>
+    <ProjectGuid>{AAC7E1AB-15E1-4758-A7B4-71552D67B10F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Practica.EF.Logic</RootNamespace>
-    <AssemblyName>Practica.EF.Logic</AssemblyName>
+    <RootNamespace>Practica.EF.Common</RootNamespace>
+    <AssemblyName>Practica.EF.Common</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,14 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,28 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseLogic.cs" />
-    <Compile Include="CustomerLogic.cs" />
-    <Compile Include="ILogic.cs" />
+    <Compile Include="Exceptions\BadCountryException.cs" />
+    <Compile Include="Exceptions\BadIDException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Practica.EF.Common\Practica.EF.Common.csproj">
-      <Project>{aac7e1ab-15e1-4758-a7b4-71552d67b10f}</Project>
-      <Name>Practica.EF.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Practica.EF.Data\Practica.EF.Data.csproj">
-      <Project>{2920dc75-7f00-4d95-aa64-9aaea40a30f5}</Project>
-      <Name>Practica.EF.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Practica.EF.Entities\Practica.EF.Entities.csproj">
-      <Project>{b9ec7bd7-e365-4683-874c-95c0bc96d79e}</Project>
-      <Name>Practica.EF.Entities</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
