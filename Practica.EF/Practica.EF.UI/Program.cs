@@ -19,27 +19,33 @@ namespace Practica.EF.UI
         // O sino hacer una interfaz no generica que implemente la interfaz generica o una cosa asi.
         static void Main(string[] args)
         {
-            ILogic<Customers> cl = new CustomerLogic();
+            // ILogic<Customers> cl = new CustomerLogic();
 
-            ILogic<Employees> el = new EmployeeLogic();
+            // ILogic<Employees> el = new EmployeeLogic();
+
+            CustomerOperations co = new CustomerOperations();
+
+            EmployeeOperations eo = new EmployeeOperations();
             
-            Console.Write("Con que tabla queres trabajar?");
-            Console.Write("\n\t1 - ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("Customers");
-            Console.ResetColor();
-            Console.Write("\n\t2 - ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("Employees");
-            Console.ResetColor();
-            Console.Write("\n\t3 - ");
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("Ninguna (salir del programa)");
-            Console.ResetColor();
 
-            // Este esta escrito horriblemente
+            // Esto esta escrito horriblemente
             while (true)
             {
+                Console.Write("\n--------------------------------------\n");
+                Console.Write("Con que tabla queres trabajar?");
+                Console.Write("\n\t1 - ");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write("Customers");
+                Console.ResetColor();
+                Console.Write("\n\t2 - ");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write("Employees");
+                Console.ResetColor();
+                Console.Write("\n\t3 - ");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write("Ninguna (salir del programa)");
+                Console.ResetColor();
+
                 Console.Write("\n--------------------------------------");
                 Console.Write("\nEligiendo tabla -  Ingresa el numero correspondiente a tu eleccion: ");
                 Console.ForegroundColor = ConsoleColor.Cyan;
@@ -99,17 +105,11 @@ namespace Practica.EF.UI
 
                         if (tabla == "1")
                         {
-                            foreach (var customer in cl.GetAll())
-                            {
-                                Console.WriteLine($"\t {customer}");
-                            }
+                            co.GetAll();
                         }
                         else
                         {
-                            foreach(var employee in el.GetAll())
-                            {
-                                Console.WriteLine($"\t {employee}");
-                            }
+                            eo.GetAll();
                         }
                         
                         Console.WriteLine();
@@ -124,33 +124,11 @@ namespace Practica.EF.UI
                         
                         if (tabla == "1")
                         {
-                            try
-                            {
-                                foreach (var customer in cl.GetByCountry(country))
-                                {
-                                    Console.WriteLine($"\t {customer}");
-                                }
-                            }
-                            catch (BadCountryException e)
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine(e.Message);
-                            }
+                            co.GetByCountry(country);
                         }
                         else
                         {
-                            try
-                            {
-                                foreach (var employee in el.GetByCountry(country))
-                                {
-                                    Console.WriteLine($"\t {employee}");
-                                }
-                            }
-                            catch (BadCountryException e)
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine(e.Message);
-                            }
+                            eo.GetByCountry(country);
                         }
 
                         Console.WriteLine();
@@ -165,31 +143,11 @@ namespace Practica.EF.UI
 
                         if (tabla == "1")
                         {
-                            try
-                            {
-                                var customer = cl.GetById(id);
-                                Console.WriteLine($"\t {customer}");
-                            }
-                            catch (BadIDException e)
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine(e.Message);
-                                Console.WriteLine("Los IDs de esta tabla son strings de 5 caracteres.");
-                            }
+                            co.GetById(id);
                         }
                         else
                         {
-                            try
-                            {
-                                var employee = el.GetById(id);
-                                Console.WriteLine($"\t {employee}");
-                            }
-                            catch (BadIDException e)
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine(e.Message);
-                                Console.WriteLine("Los IDs de esta tabla son numeros enteros.");
-                            }
+                            eo.GetById(id);
                         }
 
                         Console.WriteLine();
@@ -205,20 +163,7 @@ namespace Practica.EF.UI
                             Console.Write("\n\tIngrese el valor del campo CompanyName: ");
                             string companyName = Console.ReadLine();
 
-                            try
-                            {
-                                cl.Add(new Customers() { CustomerID = customerId, CompanyName = companyName});
-                            }
-                            catch (InvalidCustomerException e)
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine(e.Message);
-                            }
-                            catch (CustomerAlreadyInException e)
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine(e.Message);
-                            }
+                            co.Add(customerId, companyName);
                         }
                         else
                         {
@@ -228,20 +173,7 @@ namespace Practica.EF.UI
                             Console.Write("\n\tIngrese el valor del campo FirstName: ");
                             string firstName = Console.ReadLine();
 
-                            try
-                            {
-                                el.Add(new Employees() { LastName = lastName, FirstName = firstName });
-                            }
-                            catch (InvalidEmployeeException e)
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine(e.Message);
-                            }
-                            catch (EmployeeAlreadyInException e)
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine(e.Message);
-                            }
+                            eo.Add(lastName, firstName);
                         }
                         
                         Console.WriteLine();
@@ -258,25 +190,7 @@ namespace Practica.EF.UI
                             Console.Write("\n\tIngrese el nuevo valor del campo CompanyName: ");
                             string companyName = Console.ReadLine();
 
-                            try
-                            {
-                                cl.Update(new Customers() {CustomerID = customerId, CompanyName = companyName });
-                            }
-                            catch (InvalidCustomerException e)
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine(e.Message);
-                            }
-                            catch (BadIDException e)
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine(e.Message);
-                            }
-                            catch (CantUpdateDueToFKException e)
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine(e.Message);
-                            }
+                            co.Update(customerId, companyName);
                         }
                         else
                         {
@@ -287,26 +201,7 @@ namespace Practica.EF.UI
                             Console.Write("\n\tIngrese el valor del campo FirstName: ");
                             string firstName = Console.ReadLine();
 
-                            try
-                            {
-                                if (!int.TryParse(employeeId, out _)) throw new InvalidEmployeeException();
-                                el.Update(new Employees() { EmployeeID = int.Parse(employeeId), LastName = lastName, FirstName = firstName});
-                            }
-                            catch (InvalidEmployeeException e)
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine(e.Message);
-                            }
-                            catch (BadIDException e)
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine(e.Message);
-                            }
-                            catch (CantUpdateDueToFKException e)
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine(e.Message);
-                            }
+                            eo.Update(employeeId, lastName, firstName);
                         }
 
                         Console.WriteLine();
@@ -320,41 +215,14 @@ namespace Practica.EF.UI
                             Console.Write("\n\tIngrese el valor de CustomerID del registro a eliminar: ");
                             string customerId = Console.ReadLine();
 
-                            try
-                            {
-                                cl.Delete(customerId);
-                            }
-                            catch (BadIDException e)
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine(e.Message);
-                            }
-                            catch (CantDeleteDueToFKException e)
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine(e.Message);
-                            }
+                            co.Delete(customerId);
                         }
                         else
                         {
                             Console.Write("\nIngrese el valor del EmployeeID del registro a eliminar: ");
                             string employeeId = Console.ReadLine();
 
-                            try
-                            {
-                                if (!int.TryParse(employeeId , out _)) throw new BadIDException(employeeId);
-                                el.Delete(employeeId);
-                            }
-                            catch (BadIDException e )
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine(e.Message);
-                            }
-                            catch (CantDeleteDueToFKException e)
-                            {
-                                Console.WriteLine();
-                                Console.WriteLine(e.Message);
-                            }
+                            eo.Delete(employeeId);
                         }
 
                         Console.WriteLine();

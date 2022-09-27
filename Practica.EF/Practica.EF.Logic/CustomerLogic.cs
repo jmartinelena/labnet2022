@@ -95,6 +95,8 @@ namespace Practica.EF.Logic
                     throw new InvalidCustomerException();
                 }
 
+                // Fuerza al state de la entidad a ser modificado en caso que haya quedado marcado para borrar anteriormente
+                _context.Entry(customerAUpdatear).State = System.Data.Entity.EntityState.Modified;
                 _context.SaveChanges();
             }
             catch (DbEntityValidationException)
@@ -105,10 +107,10 @@ namespace Practica.EF.Logic
             {
                 throw new BadIDException(newCustomer.CustomerID);
             }
-            catch (DbUpdateException)
-            {
-                throw new CantUpdateDueToFKException(newCustomer.CustomerID);
-            }
+            //catch (DbUpdateException)
+            //{
+            //    throw new CantUpdateDueToFKException(newCustomer.CustomerID);
+            //}
         }
     }
 }

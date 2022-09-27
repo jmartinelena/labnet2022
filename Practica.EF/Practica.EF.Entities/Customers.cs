@@ -58,7 +58,7 @@ namespace Practica.EF.Entities
 
         public override string ToString()
         {
-            if (this.City == null || this.Country == null) return $"{this.CustomerID} - {this.ContactName} trabaja en {this.CompanyName}.";
+            if (this.City == null || this.Country == null || this.ContactName == null) return $"{this.CustomerID} - {this.CompanyName}.";
             else return $"{this.CustomerID} - {this.ContactName} trabaja en {this.CompanyName} y vive en {this.City}, {this.Country}.";
         }
     }

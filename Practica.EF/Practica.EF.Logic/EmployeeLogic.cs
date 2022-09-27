@@ -102,6 +102,8 @@ namespace Practica.EF.Logic
                 employeeAUpdatear.LastName = newEmployee.LastName;
                 employeeAUpdatear.FirstName = newEmployee.FirstName;
 
+                // Fuerza al state de la entidad a ser modificado en caso que haya quedado marcado para borrar anteriormente
+                _context.Entry(employeeAUpdatear).State = System.Data.Entity.EntityState.Modified;
                 _context.SaveChanges();
             }
             catch (DbEntityValidationException)
@@ -112,10 +114,10 @@ namespace Practica.EF.Logic
             {
                 throw new BadIDException(Convert.ToString(newEmployee.EmployeeID));
             }
-            catch (DbUpdateException)
-            {
-                throw new CantUpdateDueToFKException(Convert.ToString(newEmployee.EmployeeID));
-            }
+            //catch (DbUpdateException)
+            //{
+            //    throw new CantUpdateDueToFKException(Convert.ToString(newEmployee.EmployeeID));
+            //}
         }
     }
 }
