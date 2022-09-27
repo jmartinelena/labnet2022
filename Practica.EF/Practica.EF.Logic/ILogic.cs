@@ -14,5 +14,11 @@ namespace Practica.EF.Logic
 
         List<T> GetByCountry(string country);
 
+        void Add(T entity);
+
+        void Update(T entity);
+
+        void Delete(string id);
+
     }
 }

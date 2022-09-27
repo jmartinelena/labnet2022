@@ -16,11 +16,11 @@ namespace Practica.EF.Entities
         }
 
         [Key]
-        [StringLength(5)]
+        [StringLength(5, MinimumLength = 5)]
         public string CustomerID { get; set; }
 
         [Required]
-        [StringLength(40)]
+        [StringLength(40, MinimumLength = 1)]
         public string CompanyName { get; set; }
 
         [StringLength(30)]
@@ -55,5 +55,11 @@ namespace Practica.EF.Entities
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerDemographics> CustomerDemographics { get; set; }
+
+        public override string ToString()
+        {
+            if (this.City == null || this.Country == null) return $"{this.CustomerID} - {this.ContactName} trabaja en {this.CompanyName}.";
+            else return $"{this.CustomerID} - {this.ContactName} trabaja en {this.CompanyName} y vive en {this.City}, {this.Country}.";
+        }
     }
 }

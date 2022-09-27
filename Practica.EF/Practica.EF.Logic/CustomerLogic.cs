@@ -2,20 +2,23 @@
 using Practica.EF.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Practica.EF.Logic
 {
-    public class CustomerLogic : BaseLogic, ILogic<Customers>
+    public class CustomerLogic : BaseLogic<Customers>
     {
-        public List<Customers> GetAll()
+
+        public override List<Customers> GetAll()
         {
             return _context.Customers.ToList();
         }
 
-        public List<Customers> GetByCountry(string country)
+        public override List<Customers> GetByCountry(string country)
         {
             if (_context.Customers.Any(c => c.Country.ToLower() == country.ToLower()))
             {
@@ -29,7 +32,7 @@ namespace Practica.EF.Logic
             }
         }
 
-        public Customers GetById(string id)
+        public override Customers GetById(string id)
         {
             try
             {
@@ -38,6 +41,73 @@ namespace Practica.EF.Logic
             catch (InvalidOperationException)
             {
                 throw new BadIDException(id);
+            }
+        }
+        
+        public override void Add(Customers newCustomer)
+        {
+            try
+            {
+                _context.Customers.Add(newCustomer);
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException)
+            {
+                throw new InvalidCustomerException();
+            }
+            catch (DbUpdateException)
+            {
+                throw new CustomerAlreadyInException(newCustomer.CustomerID);
+            }
+        }
+
+        public override void Delete(string id)
+        {
+            try
+            {
+                var customerAEliminar = _context.Customers.Single(c => c.CustomerID == id);
+                _context.Customers.Remove(customerAEliminar);
+                _context.SaveChanges();
+            }
+            catch (InvalidOperationException)
+            {
+                throw new BadIDException(id);
+            }
+            catch (DbUpdateException)
+            {
+                throw new CantDeleteDueToFKException(id);
+            }
+        }
+
+        // Esto mas bien reemplaza una una fila por otra
+        public override void Update(Customers newCustomer)
+        {
+            try
+            {
+                var customerAUpdatear = _context.Customers.Single(c => c.CustomerID == newCustomer.CustomerID);
+
+                if (newCustomer.CompanyName != null && newCustomer.CompanyName.Length >=1 && newCustomer.CompanyName.Length <= 40)
+                {
+                    customerAUpdatear.CompanyName = newCustomer.CompanyName;
+                }
+                else
+                {
+                    throw new InvalidCustomerException();
+                }
+
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException)
+            {
+                throw new InvalidCustomerException();
+            }
+            catch (InvalidOperationException)
+            {
+                throw new BadIDException(newCustomer.CustomerID);
+            }
+            catch (DbUpdateException)
+            {
+                throw new CantUpdateDueToFKException(newCustomer.CustomerID);
             }
         }
     }

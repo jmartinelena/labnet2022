@@ -20,11 +20,11 @@ namespace Practica.EF.Entities
         public int EmployeeID { get; set; }
 
         [Required]
-        [StringLength(20)]
+        [StringLength(20, MinimumLength = 1)]
         public string LastName { get; set; }
 
         [Required]
-        [StringLength(10)]
+        [StringLength(10, MinimumLength = 1)]
         public string FirstName { get; set; }
 
         [StringLength(30)]
@@ -79,5 +79,11 @@ namespace Practica.EF.Entities
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Territories> Territories { get; set; }
+
+        public override string ToString()
+        {
+            if (this.City == null || this.Country == null) return $"{this.EmployeeID} - {this.FirstName} {this.LastName}.";
+            else return $"{this.EmployeeID} - {this.FirstName} {this.LastName} y vive en {this.City}, {this.Country}.";
+        }
     }
 }

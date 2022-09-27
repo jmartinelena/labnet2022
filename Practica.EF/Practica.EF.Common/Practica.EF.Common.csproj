@@ -43,8 +43,19 @@
   <ItemGroup>
     <Compile Include="Exceptions\BadCountryException.cs" />
     <Compile Include="Exceptions\BadIDException.cs" />
+    <Compile Include="Exceptions\CantDeleteDueToFKException.cs" />
+    <Compile Include="Exceptions\CantUpdateDueToFKException.cs" />
+    <Compile Include="Exceptions\CustomerAlreadyInException.cs" />
+    <Compile Include="Exceptions\EmployeeAlreadyInException.cs" />
+    <Compile Include="Exceptions\InvalidCustomerException.cs" />
+    <Compile Include="Exceptions\InvalidEmployeeException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Practica.EF.Entities\Practica.EF.Entities.csproj">
+      <Project>{B9EC7BD7-E365-4683-874C-95C0BC96D79E}</Project>
+      <Name>Practica.EF.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
