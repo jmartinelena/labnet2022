@@ -18,26 +18,11 @@ namespace Practica.LINQ.UI
 
             Console.WriteLine(q.Query1());
 
-            Console.WriteLine("----------------------- 2 -----------------------");
+            QueryReader.ShowQuery(q.Query2(), 2);
 
-            foreach (var item in q.Query2())
-            {
-                Console.WriteLine(item);
-            }
+            QueryReader.ShowQuery(q.Query3(), 3);
 
-            Console.WriteLine("----------------------- 3 -----------------------");
-
-            foreach (var item in q.Query3())
-            {
-                Console.WriteLine(item);
-            }
-
-            Console.WriteLine("----------------------- 4 ----------------------");
-
-            foreach (var item in q.Query4())
-            {
-                Console.WriteLine(item);
-            }
+            QueryReader.ShowQuery(q.Query4(), 4);
 
             Console.WriteLine("----------------------- 5 ---------------------");
 
@@ -50,51 +35,21 @@ namespace Practica.LINQ.UI
                 Console.WriteLine($"Minusculas: {item.ToLower()} - Mayusculas: {item.ToUpper()}");
             }
 
-            Console.WriteLine("----------------------- 7 ----------------------");
+            QueryReader.ShowQuery(q.Query7(), 7);
 
-            foreach (var item in q.Query7())
-            {
-                Console.WriteLine(item);
-            }
+            QueryReader.ShowQuery(q.Query8(),8);
 
-            Console.WriteLine("----------------------- 8 ----------------------");
+            QueryReader.ShowQuery(q.Query9(), 9);
 
-            foreach (var item in q.Query8())
-            {
-                Console.WriteLine(item);
-            }
+            QueryReader.ShowQuery(q.Query10(), 10);
 
-            Console.WriteLine("----------------------- 9 ---------------------");
-
-            foreach (var item in q.Query9())
-            {
-                Console.WriteLine(item);
-            }
-
-            Console.WriteLine("----------------------- 10 ---------------------");
-
-            foreach (var item in q.Query10())
-            {
-                Console.WriteLine(item);
-            }
-
-            Console.WriteLine("----------------------- 11 ---------------------");
-
-            foreach (var item in q.Query11())
-            {
-                Console.WriteLine(item);
-            }
+            QueryReader.ShowQuery(q.Query11(), 11);
 
             Console.WriteLine("----------------------- 12 ---------------------");
 
             Console.WriteLine(q.Query12(q.Query10()));
 
-            Console.WriteLine("----------------------- 13 ---------------------");
-
-            foreach (var item in q.Query13())
-            {
-                Console.WriteLine(item);
-            }
+            QueryReader.ShowQuery(q.Query13(),13);
 
             Console.WriteLine("-----------------------------------------------");
             
