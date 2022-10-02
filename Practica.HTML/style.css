@@ -1,0 +1,44 @@
+body, html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: brown;
+}
+
+input {
+    margin: 2px;
+}
+
+input:required:invalid {
+    border: 1px solid red;;
+}
+
+fieldset {
+    width: 300px;
+    background-color: rgb(53, 53, 53);
+}
+
+fieldset label {
+    color: white;
+}
+
+fieldset legend {
+    text-shadow: 0 0 4px black;
+    color: white;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.flex-item {
+    text-align: center;
+    margin: 10px;
+    align-self: center;
+}
