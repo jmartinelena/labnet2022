@@ -1,6 +1,6 @@
-﻿using Practica.EF.Common.Exceptions;
-using Practica.EF.Entities;
-using Practica.EF.Logic;
+﻿using Practica.MVC.Common.Exceptions;
+using Practica.MVC.Entities;
+using Practica.MVC.Logic;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Practica.EF.UI
+namespace Practica.MVC.UI
 {
     public class Program
     {

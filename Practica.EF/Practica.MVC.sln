@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica.EF.UI", "Practica.EF.UI\Practica.EF.UI.csproj", "{0B0F94AB-AE67-44B4-95D3-DFC63A5B2DA9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica.MVC.UI", "Practica.EF.UI\Practica.MVC.UI.csproj", "{0B0F94AB-AE67-44B4-95D3-DFC63A5B2DA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica.EF.Logic", "Practica.EF.Logic\Practica.EF.Logic.csproj", "{F599D23A-C05C-47FA-A33D-6B2C48496C54}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica.MVC.Logic", "Practica.EF.Logic\Practica.MVC.Logic.csproj", "{F599D23A-C05C-47FA-A33D-6B2C48496C54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica.EF.Data", "Practica.EF.Data\Practica.EF.Data.csproj", "{2920DC75-7F00-4D95-AA64-9AAEA40A30F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica.MVC.Data", "Practica.EF.Data\Practica.MVC.Data.csproj", "{2920DC75-7F00-4D95-AA64-9AAEA40A30F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica.EF.Entities", "Practica.EF.Entities\Practica.EF.Entities.csproj", "{B9EC7BD7-E365-4683-874C-95C0BC96D79E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica.MVC.Entities", "Practica.EF.Entities\Practica.MVC.Entities.csproj", "{B9EC7BD7-E365-4683-874C-95C0BC96D79E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica.EF.Common", "Practica.EF.Common\Practica.EF.Common.csproj", "{AAC7E1AB-15E1-4758-A7B4-71552D67B10F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica.MVC.Common", "Practica.EF.Common\Practica.MVC.Common.csproj", "{AAC7E1AB-15E1-4758-A7B4-71552D67B10F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practica.MVC.MVC", "Practica.MVC.MVC\Practica.MVC.MVC.csproj", "{60BEE064-1DC6-44BA-AFD8-2F4DC742E145}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{AAC7E1AB-15E1-4758-A7B4-71552D67B10F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAC7E1AB-15E1-4758-A7B4-71552D67B10F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAC7E1AB-15E1-4758-A7B4-71552D67B10F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60BEE064-1DC6-44BA-AFD8-2F4DC742E145}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60BEE064-1DC6-44BA-AFD8-2F4DC742E145}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60BEE064-1DC6-44BA-AFD8-2F4DC742E145}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60BEE064-1DC6-44BA-AFD8-2F4DC742E145}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Practica.EF.Common.Exceptions
+namespace Practica.MVC.Common.Exceptions
 {
     public class CantUpdateDueToFKException : Exception
     {

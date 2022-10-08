@@ -1,10 +1,10 @@
-using Practica.EF.Entities;
+using Practica.MVC.Entities;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 
-namespace Practica.EF.Data
+namespace Practica.MVC.Data
 {
     public partial class NorthwindContext : DbContext
     {

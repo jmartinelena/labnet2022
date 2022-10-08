@@ -1,11 +1,11 @@
-﻿using Practica.EF.Data;
+﻿using Practica.MVC.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Practica.EF.Logic
+namespace Practica.MVC.Logic
 {
     public abstract class BaseLogic<T> : ILogic<T>
     {

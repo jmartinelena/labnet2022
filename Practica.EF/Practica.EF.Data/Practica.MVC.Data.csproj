@@ -58,9 +58,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Practica.EF.Entities\Practica.EF.Entities.csproj">
+    <ProjectReference Include="..\Practica.EF.Entities\Practica.MVC.Entities.csproj">
       <Project>{b9ec7bd7-e365-4683-874c-95c0bc96d79e}</Project>
-      <Name>Practica.EF.Entities</Name>
+      <Name>Practica.MVC.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

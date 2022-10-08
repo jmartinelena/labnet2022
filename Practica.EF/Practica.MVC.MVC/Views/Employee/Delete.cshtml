@@ -1,0 +1,26 @@
+﻿@model Practica.MVC.MVC.Models.EmployeeView
+
+@{
+    ViewBag.Title = "Delete de Employee";
+}
+
+<div class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Select", "Index", "Employee")</li>
+                <li>@Html.ActionLink("Insertar", "Insert", "Employee")</li>
+                <li>@Html.ActionLink("Updatear", "Update", "Employee")</li>
+                <li>@Html.ActionLink("Deletear", "Delete", "Employee")</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<h1>Deletear en Employee</h1>
+
+@using (Html.BeginForm("Delete", "Employee", FormMethod.Post))
+{
+    <label>Id: </label> @Html.TextBoxFor(e => e.Id) <br />
+    <input type="submit" value="Enviar" class="btn btn-primary" />
+}

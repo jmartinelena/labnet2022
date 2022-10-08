@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AAC7E1AB-15E1-4758-A7B4-71552D67B10F}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Practica.EF.Common</RootNamespace>
-    <AssemblyName>Practica.EF.Common</AssemblyName>
+    <ProjectGuid>{0B0F94AB-AE67-44B4-95D3-DFC63A5B2DA9}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Practica.EF.UI</RootNamespace>
+    <AssemblyName>Practica.EF.UI</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,7 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,20 +50,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions\BadCountryException.cs" />
-    <Compile Include="Exceptions\BadIDException.cs" />
-    <Compile Include="Exceptions\CantDeleteDueToFKException.cs" />
-    <Compile Include="Exceptions\CantUpdateDueToFKException.cs" />
-    <Compile Include="Exceptions\CustomerAlreadyInException.cs" />
-    <Compile Include="Exceptions\EmployeeAlreadyInException.cs" />
-    <Compile Include="Exceptions\InvalidCustomerException.cs" />
-    <Compile Include="Exceptions\InvalidEmployeeException.cs" />
+    <Compile Include="CustomerOperations.cs" />
+    <Compile Include="EmployeeOperations.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Practica.EF.Entities\Practica.EF.Entities.csproj">
-      <Project>{B9EC7BD7-E365-4683-874C-95C0BC96D79E}</Project>
-      <Name>Practica.EF.Entities</Name>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Practica.EF.Common\Practica.MVC.Common.csproj">
+      <Project>{aac7e1ab-15e1-4758-a7b4-71552d67b10f}</Project>
+      <Name>Practica.MVC.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Practica.EF.Entities\Practica.MVC.Entities.csproj">
+      <Project>{b9ec7bd7-e365-4683-874c-95c0bc96d79e}</Project>
+      <Name>Practica.MVC.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Practica.EF.Logic\Practica.MVC.Logic.csproj">
+      <Project>{f599d23a-c05c-47fa-a33d-6b2c48496c54}</Project>
+      <Name>Practica.MVC.Logic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

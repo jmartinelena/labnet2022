@@ -1,5 +1,5 @@
-﻿using Practica.EF.Common.Exceptions;
-using Practica.EF.Entities;
+﻿using Practica.MVC.Common.Exceptions;
+using Practica.MVC.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Practica.EF.Logic
+namespace Practica.MVC.Logic
 {
     public class EmployeeLogic : BaseLogic<Employees>
     {
@@ -114,10 +114,6 @@ namespace Practica.EF.Logic
             {
                 throw new BadIDException(Convert.ToString(newEmployee.EmployeeID));
             }
-            //catch (DbUpdateException)
-            //{
-            //    throw new CantUpdateDueToFKException(Convert.ToString(newEmployee.EmployeeID));
-            //}
         }
     }
 }
