@@ -8,7 +8,7 @@ namespace Practica.MVC.Common.Exceptions
 {
     public class InvalidEmployeeException : Exception
     {
-        public InvalidEmployeeException() : base("Se ha ingresado un employee invalido. Verificar los tipos y restricciones usados a la hora de definirlo.")
+        public InvalidEmployeeException() : base("Se ha ingresado un employee inválido. Verificar los tipos y restricciones usados a la hora de definirlo.")
         {
 
         }

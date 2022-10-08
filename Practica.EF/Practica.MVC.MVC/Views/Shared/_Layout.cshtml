@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Práctica MVC</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -16,14 +16,20 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Practica de MVC", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Práctica de MVC", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Employees", "Index", "Employee")</li>
+                    <li class="dropdown">
+                        @Html.ActionLink("Employees \u25BC", "Index", "Employee", new {@class = "dropdown-toggle", @data_toggle = "dropdown" })
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Select", "Index", "Employee")</li>
+                            <li>@Html.ActionLink("Insert", "Insert", "Employee")</li>
+                            <li>@Html.ActionLink("Update", "Update", "Employee")</li>
+                            <li>@Html.ActionLink("Delete", "Delete", "Employee")</li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -32,7 +38,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>Práctica MVC - Elena, Juan Martín</p>
         </footer>
     </div>
 

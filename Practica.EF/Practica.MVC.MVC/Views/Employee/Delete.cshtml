@@ -4,23 +4,17 @@
     ViewBag.Title = "Delete de Employee";
 }
 
-<div class="navbar navbar-inverse">
-    <div class="container">
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Select", "Index", "Employee")</li>
-                <li>@Html.ActionLink("Insertar", "Insert", "Employee")</li>
-                <li>@Html.ActionLink("Updatear", "Update", "Employee")</li>
-                <li>@Html.ActionLink("Deletear", "Delete", "Employee")</li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-<h1>Deletear en Employee</h1>
+<h1 class="bg-primary text-center">Delete a Employee</h1>
 
 @using (Html.BeginForm("Delete", "Employee", FormMethod.Post))
 {
-    <label>Id: </label> @Html.TextBoxFor(e => e.Id) <br />
-    <input type="submit" value="Enviar" class="btn btn-primary" />
+    <div class="form-group row">
+        <div class="col-xs-2 col-centered">
+            <label>Id: </label> @Html.TextBoxFor(e => e.Id, new { @class = "form-control" })
+            <span class="help-block">Debe ser numérico.</span>
+        </div>
+    </div>
+    <div class="text-center">
+        <input type="submit" value="Enviar" class="btn btn-primary" />
+    </div>
 }

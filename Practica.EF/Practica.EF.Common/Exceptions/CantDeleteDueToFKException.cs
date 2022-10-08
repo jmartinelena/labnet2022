@@ -8,7 +8,7 @@ namespace Practica.MVC.Common.Exceptions
 {
     public class CantDeleteDueToFKException : Exception
     {
-        public CantDeleteDueToFKException(string id) : base($"El id {id} no puede eliminarse porque esta relacionado con otra/s tabla/s a traves de foreign key/s.")
+        public CantDeleteDueToFKException(string id) : base($"El id {id} no puede eliminarse porque esta relacionado con otra/s tabla/s a través de foreign key/s.")
         {
 
         }
