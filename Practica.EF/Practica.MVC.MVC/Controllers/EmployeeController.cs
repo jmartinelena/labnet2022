@@ -21,7 +21,7 @@ namespace Practica.MVC.MVC.Controllers
             List<Employees> employees = el.GetAll();
 
             List<EmployeeView> employeeViews = employees
-                .Select(e => new EmployeeView() { Id = e.EmployeeID, LastName = e.LastName, FirstName = e.FirstName })
+                .Select(e => new EmployeeView() { Id = Convert.ToString(e.EmployeeID), LastName = e.LastName, FirstName = e.FirstName })
                 .ToList();
 
             return View(employeeViews);
@@ -61,8 +61,10 @@ namespace Practica.MVC.MVC.Controllers
         {
             try
             {
+                if (!int.TryParse(employeeView.Id, out _)) throw new BadIDException(employeeView.Id);
+
                 Employees updatedEmployee = new Employees() {
-                    EmployeeID = employeeView.Id, 
+                    EmployeeID = int.Parse(employeeView.Id), 
                     LastName = employeeView.LastName, 
                     FirstName = employeeView.FirstName };
 
@@ -93,8 +95,9 @@ namespace Practica.MVC.MVC.Controllers
         {
             try
             {
-                string id = Convert.ToString(ev.Id);
-                el.Delete(id);
+                if (!int.TryParse(ev.Id, out _)) throw new BadIDException(ev.Id);
+
+                el.Delete(ev.Id);
                 return RedirectToAction("Index");
             }
             catch (BadIDException ex)
