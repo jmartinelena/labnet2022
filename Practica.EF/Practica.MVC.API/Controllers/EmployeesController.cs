@@ -9,6 +9,9 @@ using System.Net;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using HttpDeleteAttribute = System.Web.Http.HttpDeleteAttribute;
+using HttpGetAttribute = System.Web.Http.HttpGetAttribute;
+using HttpPostAttribute = System.Web.Http.HttpPostAttribute;
 using HttpPutAttribute = System.Web.Http.HttpPutAttribute;
 
 namespace Practica.MVC.API.Controllers
@@ -18,6 +21,7 @@ namespace Practica.MVC.API.Controllers
         private readonly EmployeeLogic _el = new EmployeeLogic();
 
         // GET api/Employees
+        [HttpGet]
         public IHttpActionResult GetEmployees()
         {
             try
@@ -39,6 +43,7 @@ namespace Practica.MVC.API.Controllers
         }
 
         // GET api/Employees/{id}
+        [HttpGet]
         public IHttpActionResult GetEmployeeById(string id)
         {
             try
@@ -62,6 +67,7 @@ namespace Practica.MVC.API.Controllers
         }
 
         // POST api/Employees
+        [HttpPost]
         public IHttpActionResult AddEmployee([FromBody] EmployeeRequest employee)
         {
             try
@@ -123,6 +129,7 @@ namespace Practica.MVC.API.Controllers
         }
 
         // DELETE api/Employees/{id}
+        [HttpDelete]
         public IHttpActionResult DeleteEmployee(int id)
         {
             try
