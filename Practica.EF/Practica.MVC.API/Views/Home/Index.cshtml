@@ -1,24 +1,50 @@
-﻿<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+﻿<div class="jumbotron" style="margin-top: 20px;">
+    <h1>Práctica de API.</h1>
+    <p class="lead">Práctica de API usando ASP.NET para el lab .NET 2022.</p>
+    <a href="/Help" class="btn btn-info" role="button">Pseudo-documentación de la API.</a>
 </div>
+
+<script src="/Scripts/jquery-3.4.1.js"></script>
+
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
+
+    @{ 
+        string url = "https://random.dog/woof.json?include=jpg,jpeg,png";
+        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+        request.Method = "GET";
+        request.ContentType = "application/json";
+        request.Accept = "application/json";
+
+        Practica.MVC.API.Models.RandomDogResponse randomDog;
+
+        using (WebResponse response = request.GetResponse())
+        {
+            using (StreamReader sr = new StreamReader(response.GetResponseStream(), System.Text.Encoding.UTF8))
+            {
+                var jtr = new Newtonsoft.Json.JsonTextReader(sr);
+                randomDog = new Newtonsoft.Json.JsonSerializer().
+                    Deserialize<Practica.MVC.API.Models.RandomDogResponse>(jtr);
+            }
+        }
+    }
+    <div class="col-centered">
+        <h1 class="text-center">Consumiendo APIs</h1><br />
+        <p class="text-center">Estoy usando la API de  https://random.dog/, las imagenes que entrega a veces tardan en cargar. </p>
+        <h2 class="text-center">API consumida con .NET usando HttpWebRequest que muestra una imagen de un perro al azar:</h2>
+        <img class="img-rounded img-responsive" src=@randomDog.Url alt="Random dog picture" style="margin: auto; height: 400px; width: auto;">
+        <br />
+        <h2 class="text-center">API consumida con jQuery usando ajax que muestra una imagen de un perro al azar:</h2>
+        <img class="img-rounded img-responsive" id="pic" src="" alt="Random dog picture" style="margin: auto; height: 400px; width: auto;"/>
     </div>
 </div>
+<script>
+    let url = "https://random.dog/woof.json?include=jpg,jpeg,png";
+    jQuery.ajax({
+        url: url,
+        type: "GET",
+        dataType: "json"
+    })
+        .done(function (data) {
+            document.getElementById("pic").src = data.url;
+        });
+</script>
