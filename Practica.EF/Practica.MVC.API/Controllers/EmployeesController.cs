@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Mvc;
 using HttpDeleteAttribute = System.Web.Http.HttpDeleteAttribute;
 using HttpGetAttribute = System.Web.Http.HttpGetAttribute;
@@ -16,6 +17,7 @@ using HttpPutAttribute = System.Web.Http.HttpPutAttribute;
 
 namespace Practica.MVC.API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class EmployeesController : ApiController
     {
         private readonly EmployeeLogic _el = new EmployeeLogic();
