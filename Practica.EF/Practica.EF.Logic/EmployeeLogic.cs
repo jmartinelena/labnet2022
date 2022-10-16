@@ -1,4 +1,5 @@
-﻿using Practica.MVC.Common.Exceptions;
+﻿using Practica.EF.Common.Exceptions;
+using Practica.MVC.Common.Exceptions;
 using Practica.MVC.Entities;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,14 @@ namespace Practica.MVC.Logic
     {
         public override List<Employees> GetAll()
         {
-            return _context.Employees.ToList();
+            try
+            {
+                return _context.Employees.ToList();
+            }
+            catch (System.Data.SqlClient.SqlException)
+            {
+                throw new CantConnectToDBException();
+            }
         }
 
         public override List<Employees> GetByCountry(string country)
@@ -37,6 +45,10 @@ namespace Practica.MVC.Logic
             {
                 int idAsInt = int.Parse(id);
                 return _context.Employees.Single(e => e.EmployeeID == idAsInt);
+            }
+            catch (System.Data.SqlClient.SqlException)
+            {
+                throw new CantConnectToDBException();
             }
             catch (InvalidOperationException)
             {
@@ -63,6 +75,10 @@ namespace Practica.MVC.Logic
             {
                 throw new EmployeeAlreadyInException(newEmployee.EmployeeID);
             }
+            catch (System.Data.SqlClient.SqlException)
+            {
+                throw new CantConnectToDBException();
+            }
         }
 
         public override void Delete(string id)
@@ -85,7 +101,11 @@ namespace Practica.MVC.Logic
             catch (FormatException)
             {
                 throw new BadIDException(id);
-            };
+            }
+            catch (System.Data.SqlClient.SqlException)
+            {
+                throw new CantConnectToDBException();
+            }
         }
 
         public override void Update(Employees newEmployee)
@@ -113,6 +133,10 @@ namespace Practica.MVC.Logic
             catch (InvalidOperationException)
             {
                 throw new BadIDException(Convert.ToString(newEmployee.EmployeeID));
+            }
+            catch (System.Data.SqlClient.SqlException)
+            {
+                throw new CantConnectToDBException();
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using Practica.MVC.API.Models;
+﻿using Practica.EF.Common.Exceptions;
+using Practica.MVC.API.Models;
 using Practica.MVC.Common.Exceptions;
 using Practica.MVC.Entities;
 using Practica.MVC.Logic;
@@ -38,10 +39,15 @@ namespace Practica.MVC.API.Controllers
 
                 return Ok(listaEmployees);
             }
+            catch (CantConnectToDBException ex)
+            {
+                return Content(HttpStatusCode.BadRequest, new { Error = ex.Message });
+            }
             catch (Exception ex)
             {
                 return Content(HttpStatusCode.BadRequest, new { Error = ex.Message });
             }
+
         }
 
         // GET api/Employees/{id}
@@ -65,6 +71,10 @@ namespace Practica.MVC.API.Controllers
             {
 
                 return Content(HttpStatusCode.NotFound, new { Error = ex.Message });
+            }
+            catch (CantConnectToDBException ex)
+            {
+                return Content(HttpStatusCode.BadRequest, new { Error = ex.Message });
             }
         }
 
@@ -95,6 +105,10 @@ namespace Practica.MVC.API.Controllers
             catch (EmployeeAlreadyInException ex)
             {
                 return Content(HttpStatusCode.Conflict, new { Error = ex.Message });
+            }
+            catch (CantConnectToDBException ex)
+            {
+                return Content(HttpStatusCode.BadRequest, new { Error = ex.Message });
             }
         }
 
@@ -128,6 +142,10 @@ namespace Practica.MVC.API.Controllers
             {
                 return Content(HttpStatusCode.Conflict, new { Error = ex.Message });
             }
+            catch (CantConnectToDBException ex)
+            {
+                return Content(HttpStatusCode.BadRequest, new { Error = ex.Message });
+            }
         }
 
         // DELETE api/Employees/{id}
@@ -146,6 +164,10 @@ namespace Practica.MVC.API.Controllers
             catch (CantDeleteDueToFKException ex)
             {
                 return Content(HttpStatusCode.Conflict, new { Error = ex.Message });
+            }
+            catch (CantConnectToDBException ex)
+            {
+                return Content(HttpStatusCode.BadRequest, new { Error = ex.Message });
             }
         }
     }

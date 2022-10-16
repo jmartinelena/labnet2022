@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Exceptions\BadCountryException.cs" />
     <Compile Include="Exceptions\BadIDException.cs" />
+    <Compile Include="Exceptions\CantConnectToDBException.cs" />
     <Compile Include="Exceptions\CantDeleteDueToFKException.cs" />
     <Compile Include="Exceptions\CantUpdateDueToFKException.cs" />
     <Compile Include="Exceptions\CustomerAlreadyInException.cs" />
